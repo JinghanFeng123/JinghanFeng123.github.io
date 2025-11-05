@@ -1,0 +1,29 @@
+{
+  "name": "my-personal-blog",
+  "version": "1.0.0",
+  "description": "A personal blog project with a profile information section and blog post display.",
+  "main": "src/scripts/main.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "webpack --mode production",
+    "test": "jest"
+  },
+  "keywords": [
+    "blog",
+    "personal",
+    "website"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "jest": "^26.0.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.0.0",
+    "css-loader": "^5.0.0",
+    "style-loader": "^2.0.0"
+  }
+}

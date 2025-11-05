@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="styles/stylesheet.css">
+</head>
+<body>
+    <header>
+        <h1>欢迎来到我的个人博客</h1>
+    </header>
+    <main>
+        <section id="profile-info">
+            <h2>个人信息填写</h2>
+            <form id="profile-form">
+                <label for="name">姓名:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="bio">简介:</label>
+                <textarea id="bio" name="bio" required></textarea>
+                
+                <label for="contact">联系方式:</label>
+                <input type="email" id="contact" name="contact" required>
+                
+                <button type="submit">提交</button>
+            </form>
+        </section>
+        <section id="blog-posts">
+            <h2>博客文章</h2>
+            <div id="posts-container">
+                <!-- 博客文章将动态加载到这里 -->
+            </div>
+        </section>
+    </main>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
