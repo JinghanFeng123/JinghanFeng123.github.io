@@ -276,6 +276,7 @@ class RustyNightWebsite {
             '欢迎与我们交流合作': 'Welcome to communicate and cooperate with us',
             '查看我们的开源项目': 'View our open source projects',
             '观看我们的技术分享': 'Watch our technical sharing',
+            '邮箱': 'Email',
             '&copy; 2024 RustyNight. 保留所有权利。': '&copy; 2024 RustyNight. All rights reserved.'
         };
 
@@ -299,7 +300,7 @@ class RustyNightWebsite {
             'Art Director': '美术总监',
             'Focus on aesthetic design and concept expression': '专注于美学设计与概念表达',
             'Waiting for your participation': '虚位以待',
-            '还没招到人': "Still haven't recruited anyone",            
+            "Still haven't recruited anyone": '还没招到人',
             'Project Showcase': '项目展示',
             'Our latest works and technical achievements': '我们的最新作品和技术成果',
             'Colourless(In Development)': '霓殇（开发中）',
@@ -317,6 +318,7 @@ class RustyNightWebsite {
             'Welcome to communicate and cooperate with us': '欢迎与我们交流合作',
             'View our open source projects': '查看我们的开源项目',
             'Watch our technical sharing': '观看我们的技术分享',
+            'Email': '邮箱',
             '&copy; 2024 RustyNight. All rights reserved.': '&copy; 2024 RustyNight. 保留所有权利。'
         };
 
