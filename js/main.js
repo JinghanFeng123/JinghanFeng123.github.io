@@ -58,6 +58,7 @@ class RustyNightWebsite {
     setupScrollEffects() {
         let lastScrollTop = 0;
         const navbar = document.getElementById('navbar');
+        if (!navbar) return;
         
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -70,6 +71,56 @@ class RustyNightWebsite {
             }
             
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        // 鼠标移到页面顶部时显示导航（仅在非触摸设备启用）
+        // 优化：鼠标靠近顶部自动唤出导航，离开后延迟隐藏
+        // 使用 pointer 媒体查询判断是否为“粗指针/触控”为主的设备，避免在带触控点的桌面误判
+        let hideNavTimer = null;
+        const isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
+        const onMouseNearTop = utils.throttle((e) => {
+            if (isCoarsePointer) return; // 触控为主设备不启用此交互
+            const clientY = (e && typeof e.clientY === 'number') ? e.clientY : 0;
+            // 当指针靠近顶部 80px 内时显示导航
+            if (clientY <= 80) {
+                // 如果汉堡菜单已打开，不要改变显示状态
+                if (!this.isMenuOpen) {
+                    navbar.classList.remove('hidden');
+                }
+                if (hideNavTimer) {
+                    clearTimeout(hideNavTimer);
+                    hideNavTimer = null;
+                }
+            } else {
+                // 若页面已经向下滚动超过阈值，则在离开顶部后延迟隐藏导航
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 100 && !this.isMenuOpen) {
+                    if (hideNavTimer) clearTimeout(hideNavTimer);
+                    hideNavTimer = setTimeout(() => {
+                        navbar.classList.add('hidden');
+                        hideNavTimer = null;
+                    }, 1200);
+                }
+            }
+        }, 100);
+
+        document.addEventListener('mousemove', onMouseNearTop);
+
+        // 当鼠标离开导航条时，若页面已滚动超过阈值则快速隐藏（避免遮挡）
+        navbar.addEventListener('mouseleave', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 100 && !this.isMenuOpen) {
+                navbar.classList.add('hidden');
+            }
+        });
+
+        // 可选：当窗口失去焦点清除定时器，防止泄漏
+        window.addEventListener('blur', () => {
+            if (hideNavTimer) {
+                clearTimeout(hideNavTimer);
+                hideNavTimer = null;
+            }
         });
 
         // 滚动动画观察器
@@ -243,6 +294,7 @@ class RustyNightWebsite {
     // 翻译到英文
     translateToEnglish() {
         const translations = {
+            'RustyNight - 创新游戏开发公司': 'RustyNight - Innovative Game Development Company',
             '首页': 'Home',
             '关于我们': 'About Us',
             '项目展示': 'Projects',
@@ -277,7 +329,7 @@ class RustyNightWebsite {
             '查看我们的开源项目': 'View our open source projects',
             '观看我们的技术分享': 'Watch our technical sharing',
             '邮箱': 'Email',
-            '&copy; 2024 RustyNight. 保留所有权利。': '&copy; 2024 RustyNight. All rights reserved.'
+            '&copy; 2025 RustyNight. 保留所有权利。': '&copy; 2025 RustyNight. All rights reserved.'
         };
 
         this.applyTranslations(translations);
@@ -286,6 +338,7 @@ class RustyNightWebsite {
     // 翻译到中文
     translateToChinese() {
         const translations = {
+            'RustyNight - Innovative Game Development Company': 'RustyNight - 创新游戏开发公司',
             'Home': '首页',
             'About Us': '关于我们',
             'Projects': '项目展示',
@@ -319,7 +372,7 @@ class RustyNightWebsite {
             'View our open source projects': '查看我们的开源项目',
             'Watch our technical sharing': '观看我们的技术分享',
             'Email': '邮箱',
-            '&copy; 2024 RustyNight. All rights reserved.': '&copy; 2024 RustyNight. 保留所有权利。'
+            '&copy; 2025 RustyNight. All rights reserved.': '&copy; 2025 RustyNight. 保留所有权利。'
         };
 
         this.applyTranslations(translations);
@@ -327,34 +380,56 @@ class RustyNightWebsite {
 
     // 应用翻译
     applyTranslations(translations) {
-        // 翻译所有文本节点
-        const walker = document.createTreeWalker(
-            document.body,
-            NodeFilter.SHOW_TEXT,
-            null,
-            false
-        );
-        
-        const textNodes = [];
-        let node;
-        
-        while (node = walker.nextNode()) {
-            textNodes.push(node);
+        // 辅助：将 HTML 实体解码为字符
+        const decodeHtml = (str) => {
+            const txt = document.createElement('textarea');
+            txt.innerHTML = String(str || '');
+            return txt.value || txt.textContent || '';
+        };
+
+        // 规范化文本（解码实体、合并空白、去首尾空格）
+        const normalize = (s) => decodeHtml(s).replace(/\s+/g, ' ').trim();
+
+        // 构建规范化后的映射（键为规范化后的源文案，值为原始翻译字符串）
+        const normalizedMap = {};
+        Object.keys(translations).forEach(k => {
+            normalizedMap[normalize(k)] = translations[k];
+        });
+
+        // 翻译 document.title（支持 head 中的 title）
+        const pageTitleKey = normalize(document.title || '');
+        if (normalizedMap[pageTitleKey]) {
+            document.title = decodeHtml(normalizedMap[pageTitleKey]);
         }
-        
-        textNodes.forEach(textNode => {
-            const text = textNode.textContent.trim();
-            if (translations[text]) {
-                textNode.textContent = translations[text];
+
+        // 支持通过 data-i18n 指定翻译键（优先使用 attribute 值，否则使用元素文本）
+        const i18nElements = document.querySelectorAll('[data-i18n]');
+        i18nElements.forEach(el => {
+            const attr = el.getAttribute('data-i18n');
+            const key = normalize(attr || el.textContent || '');
+            if (normalizedMap[key]) {
+                el.textContent = decodeHtml(normalizedMap[key]);
             }
         });
-        
-        // 特殊处理一些属性
+
+        // 翻译所有文本节点（使用规范化匹配，替换时解码翻译值以正确显示实体如 ©）
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        while (node = walker.nextNode()) {
+            const raw = node.textContent;
+            const key = normalize(raw);
+            if (normalizedMap[key]) {
+                node.textContent = decodeHtml(normalizedMap[key]);
+            }
+        }
+
+        // 特殊处理带 title 属性的元素
         const titleElements = document.querySelectorAll('[title]');
         titleElements.forEach(element => {
-            const title = element.getAttribute('title').trim();
-            if (translations[title]) {
-                element.setAttribute('title', translations[title]);
+            const titleRaw = element.getAttribute('title');
+            const key = normalize(titleRaw);
+            if (normalizedMap[key]) {
+                element.setAttribute('title', decodeHtml(normalizedMap[key]));
             }
         });
     }
