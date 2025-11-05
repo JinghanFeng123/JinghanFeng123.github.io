@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustyNight - 创新游戏开发公司</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="nav-container" id="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <h1>RustyNight</h1>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#about" class="nav-link">关于我们</a></li>
+                <li><a href="#projects" class="nav-link">项目展示</a></li>
+                <li><a href="#contact" class="nav-link">联系我们</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="language-toggle" id="language-toggle">
+                    <span class="lang-text">EN</span>
+                    <svg class="globe-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                </button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <!-- 英雄区域 -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="gradient-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">RustyNight</h1>
+                <p class="hero-subtitle">创新游戏开发 · 技术驱动未来</p>
+                <p class="hero-description">
+                    我们是一家专注于游戏开发和创新技术的公司，致力于创造令人难忘的游戏体验。
+                </p>
+                <button class="cta-button">了解更多</button>
+            </div>
+        </section>
+
+        <!-- 关于我们区域 -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">我们的团队</h2>
+                <p class="section-subtitle">专业的游戏开发团队，用心创造每一个作品</p>
+                
+                <div class="team-slider-container">
+                    <div class="team-slider" id="team-slider">
+                        <div class="team-card">
+                            <div class="card-image">
+                                <img src="images/member1.jpg" alt="张明 - 首席技术官">
+                            </div>
+                            <div class="card-content">
+                                <h3>Alisa</h3>
+                                <p class="role">首席技术官</p>
+                                <p class="description">热爱游戏开发，致力于UE5游戏开发</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="card-image">
+                                <img src="images/member2.png" alt="李雅 - 创意总监">
+                            </div>
+                            <div class="card-content">
+                                <h3>YinHu</h3>
+                                <p class="role">美术总监</p>
+                                <p class="description">专注于美学设计与概念表达</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="card-image">
+                                <img src="images/member3.png" alt="王强 - 技术总监">
+                            </div>
+                            <div class="card-content">
+                                <h3>虚位以待</h3>
+                                <p class="role"></p>
+                                <p class="description">还没招到人</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn prev-btn" id="prev-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15,18 9,12 15,6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="slider-btn next-btn" id="next-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9,18 15,12 9,6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目展示区域 -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 class="section-title">项目展示</h2>
+                <p class="section-subtitle">我们的最新作品和技术成果</p>
+                
+                <div class="projects-grid">
+                    <div class="project-card glass-effect">
+                        <div class="project-image">
+                            <img src="images/project1.jpg" alt="星际探索">
+                        </div>
+                        <div class="project-content">
+                            <h3>霓殇（开发中）</h3>
+                            <p>一款开放世界游戏，跟随主角的脚步，用情感拯救无色的世界。</p>
+                            <div class="project-tags">
+                                <span class="tag">游戏开发</span>
+                                <span class="tag">虚幻引擎</span>
+                                <span class="tag">开放世界</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card glass-effect">
+                        <div class="project-image">
+                            <img src="images/project2.jpg" alt="智能助手">
+                        </div>
+                        <div class="project-content">
+                            <h3>未知的惊喜</h3>
+                            <p>即将揭幕。</p>
+                            <!-- <div class="project-tags">
+                                <span class="tag">移动应用</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">用户体验</span>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们区域 -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                <p class="section-subtitle">欢迎与我们交流合作</p>
+                
+                <div class="contact-grid">
+                    <a href="https://github.com/JinghanFeng123" class="contact-item" target="_blank">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </div>
+                        <h3>GitHub</h3>
+                        <p>查看我们的开源项目</p>
+                    </a>
+                    
+                    <a href="https://space.bilibili.com/430570218?spm_id_from=333.1007.0.0" class="contact-item" target="_blank">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75,15.02 15.5,11.75 9.75,8.48"></polygon>
+                            </svg>
+                        </div>
+                        <h3>Bilibili</h3>
+                        <p>观看我们的技术分享</p>
+                    </a>
+                    
+                    <a href="mailto:jinghanvon@gmail.com" class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <h3>邮箱</h3>
+                        <p>contact@jinghanvon@gmail.com</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 RustyNight. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
