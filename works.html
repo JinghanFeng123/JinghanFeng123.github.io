@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 · 冯敬晗</title>
+    <meta name="description" content="冯敬晗的作品集：ShizukuClaw、机器人智能客服系统、RAG 智能客服系统等 Agent 开发项目。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="works-body">
+
+    <!-- ================= 顶部导航 ================= -->
+    <header id="header" class="fixed">
+        <div class="header_in w1590">
+            <div class="logo">
+                <a href="index.html" title="JINGHAN FENG">JINGHAN<span class="logo-dot">.</span></a>
+            </div>
+            <div class="topUtil">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link eng">Home</a></li>
+                    <li><a href="works.html" class="nav-link eng active">Portfolio</a></li>
+                </ul>
+                <button class="menuBtn" id="hamburger" aria-label="打开菜单" aria-expanded="false">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="wrap" class="works-page">
+        <!-- ================= 页头 ================= -->
+        <header class="works-header w1590">
+            <p class="sec_num eng">Portfolio</p>
+            <h1 class="sec_tit works-title">作品集</h1>
+            <p class="sec_sub">窗口会自动轮播展示项目，悬停暂停，也可以用左右按钮或键盘方向键切换</p>
+        </header>
+
+        <!-- ================= 轮播展示 ================= -->
+        <section class="showcase-section w1590">
+            <div class="showcase" id="showcase">
+                <div class="window-stack" id="window-stack"></div>
+                <button class="slider-btn prev-btn" id="prev-btn" aria-label="上一个作品">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15,18 9,12 15,6"></polyline>
+                    </svg>
+                </button>
+                <button class="slider-btn next-btn" id="next-btn" aria-label="下一个作品">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <div class="showcase-meta">
+                <div class="dots" id="dots"></div>
+                <p class="showcase-status eng"><span id="slide-count">01 / 04</span> · AUTO PLAY</p>
+            </div>
+        </section>
+
+        <!-- ================= 编辑指南 ================= -->
+        <section class="guide-section w1590">
+            <details class="guide-card">
+                <summary class="eng">EDIT GUIDE · 怎么补充或修改作品？</summary>
+                <ol>
+                    <li>打开项目里的 <code>js/data.js</code> 文件；</li>
+                    <li>在 <code>works</code> 数组里复制一段 <code>{ ... }</code> 作品块；</li>
+                    <li>修改标题、描述、截图、标签和链接，保存后刷新页面即可。</li>
+                </ol>
+                <p class="muted">当前展示的是简历中的真实项目，可随时扩充。</p>
+            </details>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="w1590 footer_in">
+            <div class="footer_logo eng">JINGHAN<span class="logo-dot">.</span></div>
+            <p class="footer_text">© <span id="year"></span> Jinghan Feng · AI Agent 开发实习生 · 杭州</p>
+            <p class="footer_links eng">
+                <a href="index.html">Home</a> /
+                <a href="works.html">Portfolio</a>
+            </p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
